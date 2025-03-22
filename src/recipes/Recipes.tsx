@@ -1,112 +1,128 @@
 import { useEffect, useState } from "react";
-import { Button, Container} from "react-bootstrap";
+import { Alert, Col, Container, Row, Spinner } from "react-bootstrap";
 import type { recipe } from "../../types";
-import RecipeViewModal from "./RecipeViewModal";
+import RecipeViewModal from "./RecipeModal/RecipeViewModal";
 import RecipeViewCard from "./RecipeViewCard";
-import RecipeAddForm from "./RecipeAddForm";
+import Sidebar from "./Sidebar.tsx/Sidebar";
 
 export default function Recipes() {
-  const [recipe, setRecipe] = useState<recipe[]>([])
-  const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(true);
+  const [recipe, setRecipe] = useState<recipe[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState<recipe | null>(null);
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  // fetch recipes from backend
   useEffect(() => {
+    // fetch recipes from backend
     const fetchRecipes = async () => {
-        try{
-            const response = await fetch("http://localhost:3000/recipe")
-            if (!response.ok) {
-                throw new Error("failed to fetch recipes")
-            }
-            const data = await response.json()
-            setRecipe(data)
-            console.log(data)
-        } catch (err) {
-            setError(err instanceof Error ? err.message: "an error occured")
+      try {
+        const response = await fetch("http://localhost:3000/recipe");
+        if (!response.ok) {
+          throw new Error("failed to fetch recipes");
         }
-    }
-    fetchRecipes()
-  }, [])
+        const data = await response.json();
+        setRecipe(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "an error occured");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchRecipes();
+  }, []);
 
-  // handle delete
   const handleDelete = async (id: number) => {
-    await fetch(`http://localhost:3000/recipe/${id}`, { method: "DELETE" })
-    setRecipe((prevRecipes) => prevRecipes.filter(item => item.id !== id))
-  }
+    // handle delete
+    await fetch(`http://localhost:3000/recipe/${id}`, { method: "DELETE" });
+    setRecipe((prevRecipes) => prevRecipes.filter((item) => item.id !== id));
+  };
 
-  // handle add
   const handleAddRecipe = (newRecipe: recipe) => {
+    // handle add
     setRecipe([...recipe, newRecipe]);
   };
 
-  //handle update recipe
   const updatedRecipe = async (updatedRecipe: recipe) => {
+    //handle update recipe
     try {
-        const response = await fetch(`http://localhost:3000/recipe/${updatedRecipe.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updatedRecipe),
-        });
-        if (!response.ok) {
-            throw new Error("Failed to update recipe")
+      const response = await fetch(
+        `http://localhost:3000/recipe/${updatedRecipe.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedRecipe),
         }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to update recipe");
+      }
 
-        //update recipe in state
-        setRecipe((prevRecipes) => 
-            prevRecipes.map((recipe:recipe) =>
-              recipe.id === updatedRecipe.id ? updatedRecipe : recipe
-            )
-          );
-        } catch (err) {
-          setError(err instanceof Error ? err.message : "An error occurred");
-        }
-      };
-    
-  // Handle button click, open the modal and set selected recipe
+      setRecipe(
+        (
+          prevRecipes //update recipe in state
+        ) =>
+          prevRecipes.map((recipe: recipe) =>
+            recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+          )
+      );
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    }
+  };
+
   const handleButtonClick = (recipe: recipe) => {
+    // Open Modal, set selected recipe
     setSelectedRecipe(recipe);
     setShowModal(true);
   };
 
-  // Close the modal
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
+  const closeRecipeModal = () => setShowModal(false); // close modal
+  
   return (
-    <div className="bg-dark min-vh-100">
-        <Container>
-            <div className="d-flex justify-content-center">
-            <Button variant="info" onClick={handleShow}>Add a New recipe</Button>
-            <RecipeAddForm 
-                show={show} 
-                handleClose={handleClose}
-                handleAddRecipe={handleAddRecipe}
-            />
-            </div>
+    <div className="bg-dark">
+      <Row className="d-flex min-vh-100">
+        <Sidebar handleAddRecipe={handleAddRecipe} />
+        <Col md={8} className="p-0">
+          <Container className="p-0">
+            {loading && (
+              <div className="d-flex justify-content-center my-5">
+                <Spinner animation="border" variant="success" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              </div>
+            )}
+            {error && <Alert>Recipe Not Found</Alert>}
+            <Row>
             {recipe?.map((recipe, index) => (
-                <RecipeViewCard key={index} 
-                    recipe={recipe} 
-                    handleButtonClick={handleButtonClick}
-                    handleDelete={() => handleDelete(recipe.id)}
+              <Col
+                key={recipe.id}
+                sm={12}
+                md={8}
+                lg={4}
+                className="d-flex justify-content-center"
+              >
+                <RecipeViewCard
+                  key={index}
+                  recipe={recipe}
+                  handleButtonClick={handleButtonClick}
+                  handleDelete={() => handleDelete(recipe.id)}
                 />
+              </Col>
             ))}
-        </Container>
-        {selectedRecipe && (
-        <RecipeViewModal 
-            showModal={showModal}
-            selectedRecipe={selectedRecipe}
-            handleCloseModal={handleCloseModal}
-            updateRecipe={updatedRecipe}
+            </Row>
+          </Container>
+        </Col>
+      </Row>
+      {selectedRecipe && (
+        <RecipeViewModal
+          showModal={showModal}
+          selectedRecipe={selectedRecipe}
+          closeRecipeModal={closeRecipeModal}
+          updateRecipe={updatedRecipe}
         />
-)}
+      )}
     </div>
-  )
+  );
 }

@@ -12,4 +12,5 @@ export type recipe = {
 export type mealplan = {
     id: number
     recipeId: number
+    day: string
 }

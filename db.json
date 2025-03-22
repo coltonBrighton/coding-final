@@ -61,23 +61,51 @@
       ]
     }
   ],
-
   "mealplan": [
     {
-      "id": 1,
-      "recipeid": 1
-    },
-    {
-      "id": 2,
-      "recipeid": 2
-    },
-    {
+      "recipeId": 3,
       "id": 3,
-      "recipeid": 3
+      "day": "sunday"
     },
     {
+      "recipeId": 4,
       "id": 4,
-      "recipeid": 4
+      "day": "sunday"
+    },
+    {
+      "recipeId": 1,
+      "day": "thursday",
+      "id": 6
+    },
+    {
+      "recipeId": 2,
+      "day": "wednesday",
+      "id": 7
+    },
+    {
+      "recipeId": 1,
+      "day": "monday",
+      "id": 8
+    },
+    {
+      "recipeId": 1,
+      "day": "thursday",
+      "id": 9
+    },
+    {
+      "recipeId": 1,
+      "day": "friday",
+      "id": 10
+    },
+    {
+      "recipeId": 1,
+      "day": "saturday",
+      "id": 11
+    },
+    {
+      "recipeId": 2,
+      "day": "tuesday",
+      "id": 12
     }
   ]
 }

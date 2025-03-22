@@ -1,4 +1,4 @@
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Dropdown } from "react-bootstrap";
 import type { recipe, mealplan } from "../../types";
 import { useState } from "react";
 
@@ -14,14 +14,14 @@ export default function RecipeViewCard({
   handleDelete,
 }: Props) {
   const [mealPlan, setMealPlan] = useState<mealplan[]>([]);
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
 
   // Mark the function as async to handle fetch properly
-  const handleAddToMealPlan = async (recipe: recipe) => {
+  const handleAddToMealPlan = async (recipe: recipe, day: string) => {
     try {
       const mealplanData = {
-        recipeid: recipe.id,
-        name: recipe.name,
-        description: recipe.description,
+        recipeId: recipe.id,
+        day: day
       };
 
       const response = await fetch("http://localhost:3000/mealplan", {
@@ -37,33 +37,58 @@ export default function RecipeViewCard({
         const newMealPlan = [...mealPlan, newRecipe]; // Add the new recipe to meal plan
         setMealPlan(newMealPlan);
       } else {
-        console.error("Failed to add recipe");
+        throw new Error("Failed to add recipe")
       }
     } catch (error) {
-      console.error("Error:", error);
+      throw new Error("Failed to add recipe")
     }
   };
 
   return (
     <>
-      <Card className="my-3">
+      <Card className="my-3 w-100 bg-light" style={{ minHeight: 400 + "px" }}>
         <Card.Body>
           <Card.Title>{recipe.name}</Card.Title>
           <Card.Text>{recipe.description}</Card.Text>
-          <Button variant="outline-primary" onClick={() => handleButtonClick(recipe)}>
-            Cook Now!
-          </Button>
-          <Button 
-            className="mx-3"
-            variant="outline-success"
-            onClick={() => handleAddToMealPlan(recipe)} // Correctly invoke the function
+        </Card.Body>
+        <div className="d-flex flex-column mt-auto mx-3">
+          <Button
+            variant="outline-primary"
+            className="mb-3"
+            onClick={() => handleButtonClick(recipe)}
           >
-            Add To Meal Plan
+            View Recipe
           </Button>
-          <Button variant="outline-danger" onClick={() => handleDelete(recipe.id)}>
+          <Dropdown className="d-flex">
+            <Dropdown.Toggle variant="outline-success" id="dropdown-basic" className="flex-grow-1 mb-3">
+              {selectedDay || "Select a Day"}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={() => setSelectedDay("sunday")}>Sunday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("monday")}>Monday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("tuesday")}>Tuesday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("wednesday")}>Wednesday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("thursday")}>Thursday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("friday")}>Friday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("saturday")}>Saturday</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <Button
+          variant="outline-success"
+          className="mb-3"
+          onClick={() => handleAddToMealPlan(recipe, selectedDay || "")}
+        >
+          Add to Meal Plan
+        </Button>
+          <Button
+            variant="outline-danger"
+            className="mb-3"
+            onClick={() => handleDelete(recipe.id)}
+          >
             Delete
           </Button>
-        </Card.Body>
+        </div>
       </Card>
     </>
   );
