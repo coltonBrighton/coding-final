@@ -15,7 +15,7 @@ export default function Layout() {
     document.title = pageTitles[location.pathname] || "FlavorForge";
   }, [location.pathname]);
   return (
-    <div className="bg-dark min-vh-100">
+    <div className="bg-dark vw-100 min-vh-100">
         <Nav />
         <div className="min-vh-100">
         <Outlet />

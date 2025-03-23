@@ -1,14 +1,9 @@
 import type { recipe, mealplan } from "../../types";
 import { useEffect, useState } from "react";
 import { Alert, Container, Spinner } from "react-bootstrap";
-import Sunday from "./daily-recipies/Sunday";
-import Monday from "./daily-recipies/Monday";
-import Tuesday from "./daily-recipies/Tuesday";
-import Wednesday from "./daily-recipies/Wednesday";
-import Thursday from "./daily-recipies/Thursday";
-import Friday from "./daily-recipies/Friday";
-import Saturday from "./daily-recipies/Saturday";
+
 import MealPlannerViewModal from "./daily-recipies/MealPlannerViewModal";
+import MealPlannerDetails from "./daily-recipies/MealPlannerDetails";
 
 export default function MealPlanner({}) {
   const [loading, setLoading] = useState(true);
@@ -87,40 +82,47 @@ export default function MealPlanner({}) {
         )}
 
         {error && <Alert variant="danger">{error}</Alert>}
-        <Sunday
+        <MealPlannerDetails
           handleDelete={handleDelete}
           mealPlanWithRecipes={mealPlanWithRecipes}
           handleButtonClick={handleButtonClick}
+          dayOfTheWeek={"Sunday"}
         />
-        <Monday
+        <MealPlannerDetails
           handleDelete={handleDelete}
           mealPlanWithRecipes={mealPlanWithRecipes}
           handleButtonClick={handleButtonClick}
+          dayOfTheWeek={"Monday"}
         />
-        <Tuesday
+        <MealPlannerDetails
           handleDelete={handleDelete}
           mealPlanWithRecipes={mealPlanWithRecipes}
           handleButtonClick={handleButtonClick}
+          dayOfTheWeek={"Tuesday"}
         />
-        <Wednesday
+        <MealPlannerDetails
           handleDelete={handleDelete}
           mealPlanWithRecipes={mealPlanWithRecipes}
           handleButtonClick={handleButtonClick}
+          dayOfTheWeek={"Wednesday"}
         />
-        <Thursday
+        <MealPlannerDetails
           handleDelete={handleDelete}
           mealPlanWithRecipes={mealPlanWithRecipes}
           handleButtonClick={handleButtonClick}
+          dayOfTheWeek={"Thursday"}
         />
-        <Friday
+        <MealPlannerDetails
           handleDelete={handleDelete}
           mealPlanWithRecipes={mealPlanWithRecipes}
           handleButtonClick={handleButtonClick}
+          dayOfTheWeek={"Friday"}
         />
-        <Saturday
+        <MealPlannerDetails
           handleDelete={handleDelete}
           mealPlanWithRecipes={mealPlanWithRecipes}
           handleButtonClick={handleButtonClick}
+          dayOfTheWeek={"Saturday"}
         />
         {selectedRecipe && (
                 <MealPlannerViewModal

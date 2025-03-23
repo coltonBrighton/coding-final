@@ -11,12 +11,14 @@ type Props = {
     day: string;
   }[];
   handleButtonClick: (recipe: recipe | undefined) => void
+  dayOfTheWeek: string
 };
 
-export default function Wednesday({
+export default function MealPlannerDetails({
   handleDelete,
   mealPlanWithRecipes,
-  handleButtonClick
+  handleButtonClick,
+  dayOfTheWeek
 }: Props) {
   const [collapsed, setCollapsed] = useState(false);
 
@@ -26,7 +28,7 @@ export default function Wednesday({
   return (
     <div className="text-light">
       <Stack direction="horizontal">
-        <h3 className="display-3 mx-3">Wednesday</h3>
+        <h3 className="display-3 mx-3">{dayOfTheWeek}</h3>
         <Button
           variant="outline-light"
           className="text-light"
@@ -39,7 +41,7 @@ export default function Wednesday({
       <Row>
         {!collapsed &&
           mealPlanWithRecipes
-            .filter((meal) => meal.day === "wednesday")
+            .filter((meal) => meal.day === dayOfTheWeek)
             .map((meal) => (
               <Col
                 key={meal.id}

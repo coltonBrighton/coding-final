@@ -36,6 +36,7 @@ export default function RecipeViewCard({
         const newRecipe = await response.json();
         const newMealPlan = [...mealPlan, newRecipe]; // Add the new recipe to meal plan
         setMealPlan(newMealPlan);
+        setSelectedDay("")
       } else {
         throw new Error("Failed to add recipe")
       }
@@ -46,7 +47,7 @@ export default function RecipeViewCard({
 
   return (
     <>
-      <Card className="my-3 w-100 bg-light" style={{ minHeight: 400 + "px" }}>
+      <Card className="my-3 bg-light" style={{ width: 18 +"rem", minHeight: 400 + "px" }}>
         <Card.Body>
           <Card.Title>{recipe.name}</Card.Title>
           <Card.Text>{recipe.description}</Card.Text>
@@ -65,13 +66,13 @@ export default function RecipeViewCard({
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item onClick={() => setSelectedDay("sunday")}>Sunday</Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedDay("monday")}>Monday</Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedDay("tuesday")}>Tuesday</Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedDay("wednesday")}>Wednesday</Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedDay("thursday")}>Thursday</Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedDay("friday")}>Friday</Dropdown.Item>
-              <Dropdown.Item onClick={() => setSelectedDay("saturday")}>Saturday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("Sunday")}>Sunday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("Monday")}>Monday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("Tuesday")}>Tuesday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("Wednesday")}>Wednesday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("Thursday")}>Thursday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("Friday")}>Friday</Dropdown.Item>
+              <Dropdown.Item onClick={() => setSelectedDay("Saturday")}>Saturday</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <Button

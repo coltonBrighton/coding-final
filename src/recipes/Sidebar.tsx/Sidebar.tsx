@@ -8,8 +8,8 @@ type Props = {
 
 export default function Sidebar({ handleAddRecipe }: Props) {
   return (
-    <Col md={2}>
-      <Card className="m-3 bg-light">
+    <Col lg={3} className="d-flex justify-content-center">
+      <Card className="m-3 bg-light" style={{ width: 18 + "rem"}}>
         <Card.Body>
           <Card.Title className="text-center"><h4>Add A New Recipe:</h4></Card.Title>
             <RecipeAddForm handleAddRecipe={handleAddRecipe} />
