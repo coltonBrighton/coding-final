@@ -1,10 +1,10 @@
-import { Outlet, useLocation } from "react-router-dom";
-import Nav from "./Nav";
-import { useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom"
+import Nav from "./Nav"
+import { useEffect } from "react"
 
 export default function Layout() {
   // make a variable for the page you are currently on
-  const location = useLocation();
+  const location = useLocation()
 
   // useEffect hook for updating the name of the title in the tab
   useEffect(() => {
@@ -12,10 +12,10 @@ export default function Layout() {
       "/home": "Home - FlavorForge",
       "/meal-planner": "Meal Planner - FlavorForge",
       "/recipes": "Recipes - FlavorForge",
-    };
+    }
 
-    document.title = pageTitles[location.pathname] || "FlavorForge";
-  }, [location.pathname]);
+    document.title = pageTitles[location.pathname] || "FlavorForge"
+  }, [location.pathname])
   return (
     <div className="bg-dark vw-100 min-vh-100">
       <Nav />
@@ -23,5 +23,5 @@ export default function Layout() {
         <Outlet />
       </div>
     </div>
-  );
+  )
 }

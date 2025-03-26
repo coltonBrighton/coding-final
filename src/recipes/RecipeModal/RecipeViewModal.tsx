@@ -1,15 +1,15 @@
-import { Modal } from "react-bootstrap";
-import { recipe } from "../../../types";
-import { ChangeEvent, useEffect, useState } from "react";
-import ModalButtons from "./ModalButtons";
-import ModalForm from "./ModalForm";
+import { Modal } from "react-bootstrap"
+import { recipe } from "../../../types"
+import { ChangeEvent, useEffect, useState } from "react"
+import ModalButtons from "./ModalButtons"
+import ModalForm from "./ModalForm"
 
 type Props = {
-  showModal: boolean;
-  selectedRecipe: recipe;
-  closeRecipeModal: () => void;
-  updateRecipe: (updatedRecipe: recipe) => void;
-};
+  showModal: boolean
+  selectedRecipe: recipe
+  closeRecipeModal: () => void
+  updateRecipe: (updatedRecipe: recipe) => void
+}
 
 export default function RecipeViewModal({
   showModal,
@@ -18,35 +18,34 @@ export default function RecipeViewModal({
   updateRecipe,
 }: Props) {
   // State to hold edited recipe
-  const [editedRecipe, setEditedRecipe] = useState<recipe>(selectedRecipe);
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [editedRecipe, setEditedRecipe] = useState<recipe>(selectedRecipe)
+  const [isEditMode, setIsEditMode] = useState(false)
 
   // Update state when user updates input
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target // destructure name and value properties from event target
     setEditedRecipe({
       ...editedRecipe,
       [name]: value,
-    });
-  };
+    }) // udates the state of the named input field with the new value of the input field
+  }
 
   const handleSaveClick = () => {
-    // Pass the updated recipe object to updateRecipe
-    updateRecipe(editedRecipe); // This updates the parent state
-    setIsEditMode(false); // Exit edit mode
-    closeRecipeModal(); // Close modal after saving
-  };
+    updateRecipe(editedRecipe) // update recipe state with editedRecipe
+    setIsEditMode(false) // Exit edit mode
+    closeRecipeModal() // Close modal after saving
+  }
 
   // Sync editedRecipe state with selectedRecipe when selectedRecipe changes
   useEffect(() => {
-    setEditedRecipe(selectedRecipe); // Reset editedRecipe state when selectedRecipe changes
-  }, [selectedRecipe]);
+    setEditedRecipe(selectedRecipe) // Reset editedRecipe state when selectedRecipe changes
+  }, [selectedRecipe])
 
   const handleEditClick = () => {
-    setIsEditMode(true); // Enable edit mode
-  };
+    setIsEditMode(true) // Enable edit mode
+  }
 
   return (
     <div>
@@ -79,5 +78,5 @@ export default function RecipeViewModal({
         </Modal.Footer>
       </Modal>
     </div>
-  );
+  )
 }

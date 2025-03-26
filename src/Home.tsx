@@ -1,9 +1,7 @@
-import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
-type Props = {};
-
-export default function Home({}: Props) {
+export default function Home() {
   return (
     <div>
       <Container>
@@ -29,5 +27,5 @@ export default function Home({}: Props) {
         </p>
       </Container>
     </div>
-  );
+  )
 }

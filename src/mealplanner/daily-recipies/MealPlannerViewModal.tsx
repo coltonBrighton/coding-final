@@ -1,10 +1,10 @@
-import { Button, Modal } from "react-bootstrap";
-import type { recipe } from "../../../types";
+import { Button, Modal } from "react-bootstrap"
+import type { recipe } from "../../../types"
 type Props = {
-  showModal: boolean;
-  closeModal: () => void;
-  selectedRecipe: recipe;
-};
+  showModal: boolean
+  closeModal: () => void
+  selectedRecipe: recipe
+}
 
 export default function MealPlannerViewModal({
   showModal,
@@ -30,5 +30,5 @@ export default function MealPlannerViewModal({
         </Modal.Footer>
       </Modal>
     </div>
-  );
+  )
 }

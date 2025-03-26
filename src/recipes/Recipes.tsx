@@ -1,49 +1,55 @@
-import { useEffect, useState } from "react";
-import { Alert, Col, Container, Row, Spinner } from "react-bootstrap";
-import type { recipe } from "../../types";
-import RecipeViewModal from "./RecipeModal/RecipeViewModal";
-import RecipeViewCard from "./RecipeViewCard";
-import Sidebar from "./Sidebar.tsx/Sidebar";
+import { useEffect, useState } from "react"
+import { Alert, Col, Container, Row, Spinner } from "react-bootstrap"
+import type { recipe } from "../../types"
+import RecipeViewModal from "./RecipeModal/RecipeViewModal"
+import RecipeViewCard from "./RecipeViewCard"
+import Sidebar from "./Sidebar.tsx/Sidebar"
 
 export default function Recipes() {
-  const [loading, setLoading] = useState(true);
-  const [recipe, setRecipe] = useState<recipe[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedRecipe, setSelectedRecipe] = useState<recipe | null>(null);
+  const [loading, setLoading] = useState(true)
+  const [recipe, setRecipe] = useState<recipe[]>([])
+  const [error, setError] = useState<string | null>(null)
+  const [showModal, setShowModal] = useState(false)
+  const [selectedRecipe, setSelectedRecipe] = useState<recipe | null>(null)
 
   useEffect(() => {
     // fetch recipes from backend
     const fetchRecipes = async () => {
       try {
-        const response = await fetch("http://localhost:3000/recipe");
+        const response = await fetch("http://localhost:3000/recipe")
         if (!response.ok) {
-          throw new Error("failed to fetch recipes");
+          // throw error if one occures
+          throw new Error("failed to fetch recipes")
         }
-        const data = await response.json();
-        setRecipe(data);
+        // parse to json
+        const data = await response.json()
+        // update state with the parsed recipe
+        setRecipe(data)
       } catch (err) {
-        setError(err instanceof Error ? err.message : "an error occured");
+        // if error occurs update error state
+        setError(err instanceof Error ? err.message : "an error occured")
       } finally {
-        setLoading(false);
+        // update loading state after either an erorr or recipes fetched from backend
+        setLoading(false)
       }
-    };
-    fetchRecipes();
-  }, []);
+    }
+    fetchRecipes()
+  }, [])
 
   const handleDelete = async (id: number) => {
-    // handle delete
-    await fetch(`http://localhost:3000/recipe/${id}`, { method: "DELETE" });
-    setRecipe((prevRecipes) => prevRecipes.filter((item) => item.id !== id));
-  };
+    // grab recipe.id to delete it from backend.
+    await fetch(`http://localhost:3000/recipe/${id}`, { method: "DELETE" })
+    // update state to show all recipes but the one deleted
+    setRecipe((prevRecipes) => prevRecipes.filter((item) => item.id !== id))
+  }
 
   const handleAddRecipe = (newRecipe: recipe) => {
-    // handle add to front end
-    setRecipe([...recipe, newRecipe]);
-  };
+    // update recipe state with the new recipe that has been added
+    setRecipe([...recipe, newRecipe])
+  }
 
   const updatedRecipe = async (updatedRecipe: recipe) => {
-    //handle update recipe
+    // update recipe on backend
     try {
       const response = await fetch(
         `http://localhost:3000/recipe/${updatedRecipe.id}`,
@@ -54,11 +60,13 @@ export default function Recipes() {
           },
           body: JSON.stringify(updatedRecipe),
         }
-      );
+      )
       if (!response.ok) {
-        throw new Error("Failed to update recipe");
+        // update state with error message if error occurs
+        setError("Failed to update recipe")
       }
 
+      // update the recipe in state for the front end using map
       setRecipe(
         (
           prevRecipes //update recipe in state
@@ -66,19 +74,20 @@ export default function Recipes() {
           prevRecipes.map((recipe: recipe) =>
             recipe.id === updatedRecipe.id ? updatedRecipe : recipe
           )
-      );
+      )
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      // update error state if error occurs
+      setError(err instanceof Error ? err.message : "An error occurred")
     }
-  };
+  }
 
   const handleButtonClick = (recipe: recipe) => {
-    // Open Modal, set selected recipe
-    setSelectedRecipe(recipe);
-    setShowModal(true);
-  };
+    // setShowModal to true, setSelectedRecipe to the current recipe
+    setSelectedRecipe(recipe)
+    setShowModal(true)
+  }
 
-  const closeRecipeModal = () => setShowModal(false); // close modal
+  const closeRecipeModal = () => setShowModal(false) // close modal
 
   return (
     <div className="bg-dark">
@@ -124,5 +133,5 @@ export default function Recipes() {
         />
       )}
     </div>
-  );
+  )
 }

@@ -1,10 +1,10 @@
-import RecipeAddForm from "./RecipeAddForm";
-import { Card, Col } from "react-bootstrap";
-import { recipe } from "../../../types";
+import RecipeAddForm from "./RecipeAddForm"
+import { Card, Col } from "react-bootstrap"
+import { recipe } from "../../../types"
 
 type Props = {
-  handleAddRecipe: (newRecipe: recipe) => void;
-};
+  handleAddRecipe: (newRecipe: recipe) => void
+}
 
 export default function Sidebar({ handleAddRecipe }: Props) {
   return (
@@ -23,5 +23,5 @@ export default function Sidebar({ handleAddRecipe }: Props) {
         </Card.Body>
       </Card>
     </Col>
-  );
+  )
 }

@@ -1,12 +1,12 @@
-import { Button, Card } from "react-bootstrap";
-import { recipe, mealplan } from "../../types";
+import { Button, Card } from "react-bootstrap"
+import { recipe, mealplan } from "../../types"
 
 type Props = {
-  handleDelete: (id: number | undefined) => void;
-  recipe: recipe | undefined;
-  mealPlan: mealplan;
-  handleButtonClick: (recipe: recipe | undefined) => void;
-};
+  handleDelete: (id: number | undefined) => void
+  recipe: recipe | undefined
+  mealPlan: mealplan
+  handleButtonClick: (recipe: recipe | undefined) => void
+}
 
 export default function MealPlannerCard({
   handleDelete,
@@ -43,5 +43,5 @@ export default function MealPlannerCard({
         </div>
       </Card>
     </div>
-  );
+  )
 }

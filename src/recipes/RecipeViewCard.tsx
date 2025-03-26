@@ -1,48 +1,50 @@
-import { Button, Card, Dropdown } from "react-bootstrap";
-import type { recipe, mealplan } from "../../types";
-import { useState } from "react";
+import { Button, Card, Dropdown } from "react-bootstrap"
+import type { recipe, mealplan } from "../../types"
+import { useState } from "react"
 
 type Props = {
-  recipe: recipe;
-  handleButtonClick: (recipe: recipe) => void;
-  handleDelete: (recipeId: number) => void;
-};
+  recipe: recipe
+  handleButtonClick: (recipe: recipe) => void
+  handleDelete: (recipeId: number) => void
+}
 
 export default function RecipeViewCard({
   recipe,
   handleButtonClick,
   handleDelete,
 }: Props) {
-  const [mealPlan, setMealPlan] = useState<mealplan[]>([]);
-  const [selectedDay, setSelectedDay] = useState<string | null>(null);
+  const [mealPlan, setMealPlan] = useState<mealplan[]>([])
+  const [selectedDay, setSelectedDay] = useState<string | null>(null)
   // add recipe to backend
   const handleAddToMealPlan = async (recipe: recipe, day: string) => {
     try {
+      // make meal plan object with recipeId and day
       const mealplanData = {
         recipeId: recipe.id,
         day: day,
-      };
+      }
 
+      // add to backend
       const response = await fetch("http://localhost:3000/mealplan", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(mealplanData),
-      });
+      })
 
       if (response.ok) {
-        const newRecipe = await response.json();
-        const newMealPlan = [...mealPlan, newRecipe]; // Add the new recipe to meal plan
-        setMealPlan(newMealPlan);
-        setSelectedDay("");
+        const newRecipe = await response.json() // prase to json
+        const newMealPlan = [...mealPlan, newRecipe] // Add the new recipe to meal plan
+        setMealPlan(newMealPlan) // update state with the new meal plan
+        setSelectedDay("") // reset selected day dropdown to
       } else {
-        throw new Error("Failed to add recipe");
+        throw new Error("Failed to add recipe") // throw error if unable to add to mealplan
       }
     } catch (error) {
-      throw new Error("Failed to add recipe");
+      throw new Error("Failed to add recipe")
     }
-  };
+  }
 
   return (
     <>
@@ -112,5 +114,5 @@ export default function RecipeViewCard({
         </div>
       </Card>
     </>
-  );
+  )
 }

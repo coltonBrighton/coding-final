@@ -1,18 +1,18 @@
-import type { recipe } from "../../../types";
-import { Button, Col, Row, Stack } from "react-bootstrap";
-import MealPlannerCard from "../MealPlannerCard";
-import { useState } from "react";
+import type { recipe } from "../../../types"
+import { Button, Col, Row, Stack } from "react-bootstrap"
+import MealPlannerCard from "../MealPlannerCard"
+import { useState } from "react"
 type Props = {
-  handleDelete: (id: number | undefined) => void;
+  handleDelete: (id: number | undefined) => void
   mealPlanWithRecipes: {
-    mealRecipe: recipe | undefined;
-    id: number;
-    recipeId: number;
-    day: string;
-  }[];
-  handleButtonClick: (recipe: recipe | undefined) => void;
-  dayOfTheWeek: string;
-};
+    mealRecipe: recipe | undefined
+    id: number
+    recipeId: number
+    day: string
+  }[]
+  handleButtonClick: (recipe: recipe | undefined) => void
+  dayOfTheWeek: string
+}
 
 export default function MealPlannerDetails({
   handleDelete,
@@ -20,11 +20,11 @@ export default function MealPlannerDetails({
   handleButtonClick,
   dayOfTheWeek,
 }: Props) {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(false)
   // function to show or hide reciepes
   const toggleCollapse = () => {
-    setCollapsed((collapsed) => !collapsed);
-  };
+    setCollapsed((collapsed) => !collapsed)
+  }
   return (
     <div className="text-light">
       <Stack direction="horizontal">
@@ -60,5 +60,5 @@ export default function MealPlannerDetails({
             ))}
       </Row>
     </div>
-  );
+  )
 }

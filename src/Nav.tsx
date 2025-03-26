@@ -5,8 +5,8 @@ import {
   NavbarBrand,
   NavbarToggle,
   NavItem,
-} from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+} from "react-bootstrap"
+import { NavLink } from "react-router-dom"
 
 export default function () {
   return (
@@ -58,5 +58,5 @@ export default function () {
         </Container>
       </Navbar>
     </div>
-  );
+  )
 }

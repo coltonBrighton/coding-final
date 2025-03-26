@@ -1,13 +1,13 @@
-import { Form } from "react-bootstrap";
-import { recipe } from "../../../types";
-import { ChangeEvent } from "react";
+import { Form } from "react-bootstrap"
+import { recipe } from "../../../types"
+import { ChangeEvent } from "react"
 
 type Props = {
   handleChange: (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
-  editedRecipe: recipe;
-};
+  ) => void
+  editedRecipe: recipe
+}
 
 export default function ModalForm({ handleChange, editedRecipe }: Props) {
   return (
@@ -57,5 +57,5 @@ export default function ModalForm({ handleChange, editedRecipe }: Props) {
         </Form.Group>
       </Form>
     </>
-  );
+  )
 }

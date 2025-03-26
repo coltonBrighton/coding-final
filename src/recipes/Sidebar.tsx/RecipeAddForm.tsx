@@ -1,53 +1,60 @@
-import { FormEvent, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { FormEvent, useState } from "react"
+import { Alert, Button, Form } from "react-bootstrap"
 
 type Props = {
-  handleAddRecipe: (newRecipe: any) => void;
-};
+  handleAddRecipe: (newRecipe: any) => void
+}
 
 export default function RecipeAddForm({ handleAddRecipe }: Props) {
   // State to store form data
-  const [recipeName, setRecipeName] = useState("");
-  const [recipeDescription, setRecipeDescription] = useState("");
-  const [recipeIngredients, setRecipeIngredients] = useState("");
-  const [recipeInstructions, setRecipeInstructions] = useState("");
+  const [recipeName, setRecipeName] = useState("")
+  const [recipeDescription, setRecipeDescription] = useState("")
+  const [recipeIngredients, setRecipeIngredients] = useState("")
+  const [recipeInstructions, setRecipeInstructions] = useState("")
+  const [error, setError] = useState<string | null>(null)
 
   // handle form submission
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+    // prevent page refresh
+    e.preventDefault()
+    // make recipe object
     const recipeData = {
       name: recipeName,
       description: recipeDescription,
       ingredients: recipeIngredients,
       instructions: recipeInstructions,
-    };
+    }
     try {
+      // add to backend
       const response = await fetch("http://localhost:3000/recipe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(recipeData),
-      });
+      })
 
       if (response.ok) {
-        const newRecipe = await response.json();
-        handleAddRecipe(newRecipe);
+        // parse to json
+        const newRecipe = await response.json()
+        // update state with new recipe
+        handleAddRecipe(newRecipe)
 
         // Clear the form fields after successful submission
-        setRecipeName("");
-        setRecipeDescription("");
-        setRecipeIngredients("");
-        setRecipeInstructions("");
+        setRecipeName("")
+        setRecipeDescription("")
+        setRecipeIngredients("")
+        setRecipeInstructions("")
       } else {
-        throw new Error("Failed to add recipe");
+        setError("Failed to add recipe")
       }
     } catch (error) {
-      throw new Error("Failed to add recipe");
+      setError(error instanceof Error ? error.message : "an error occured")
     }
-  };
+  }
   return (
     <div className="m-1">
+      {error && <Alert>Recipe could not be added!</Alert>}
       <Form onSubmit={handleSubmit}>
         <Form.Label>Recipie Name:</Form.Label>
         <Form.Control
@@ -96,5 +103,5 @@ export default function RecipeAddForm({ handleAddRecipe }: Props) {
         </Button>
       </div>
     </div>
-  );
+  )
 }
