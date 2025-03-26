@@ -7,14 +7,17 @@ import MealPlannerDetails from "./daily-recipies/MealPlannerDetails";
 
 export default function MealPlanner({}) {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null)
-  const [recipe, setRecipe] = useState<recipe[]>([])
-  const [mealPlan, setMealPlan] = useState<mealplan[]>([])
-  const [showModal, setShowModal] = useState(false)
-  const [selectedRecipe, setSelectedRecipe] = useState<recipe | undefined>(undefined)
+  const [error, setError] = useState<string | null>(null);
+  const [recipe, setRecipe] = useState<recipe[]>([]);
+  const [mealPlan, setMealPlan] = useState<mealplan[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState<recipe | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     const fetchData = async () => {
+      // update backend
       try {
         const [mealPlanResponse, recipeResponse] = await Promise.all([
           fetch("http://localhost:3000/mealplan"),
@@ -28,28 +31,32 @@ export default function MealPlanner({}) {
           throw new Error("Failed to fetch recipes");
         }
 
+        // parse to json
         const [mealPlanData, recipeData] = await Promise.all([
           mealPlanResponse.json(),
           recipeResponse.json(),
         ]);
 
+        // update mealPlan and recipe state
         setMealPlan(mealPlanData);
         setRecipe(recipeData);
       } catch (err) {
+        // update error state if error occurs
         setError(err instanceof Error ? err.message : "An error occurred");
       } finally {
+        // update loading state
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
+  // find the recipe.id with its corresponding recipeId in the mealplan data
   const getRecipeById = (recipeId: number) => {
     return recipe.find((r) => recipeId === r.id);
   };
 
-  // grab mealplan item by id and filter it out to delete it
+  // grab mealplan item by id delete from backend and filter it out from frontend
   const handleDelete = async (id: number | undefined) => {
     await fetch(`http://localhost:3000/mealplan/${id}`, { method: "DELETE" });
     setMealPlan((prevMeal) => prevMeal.filter((item) => item.id !== id));
@@ -65,14 +72,14 @@ export default function MealPlanner({}) {
   });
 
   const handleButtonClick = (recipe: recipe | undefined) => {
-    // Open Modal, set selected recipe
+    // show modal and set recipe as selected recipe
     setSelectedRecipe(recipe);
     setShowModal(true);
   };
   const closeModal = () => setShowModal(false); // close modal
   return (
     <div className="bg-dark min-vh-100">
-      <Container>
+      <Container className="mt-3">
         {loading && (
           <div className="d-flex justify-content-center mt-5">
             <Spinner animation="border" variant="success" role="status">
@@ -125,12 +132,12 @@ export default function MealPlanner({}) {
           dayOfTheWeek={"Saturday"}
         />
         {selectedRecipe && (
-                <MealPlannerViewModal
-                  showModal={showModal}
-                  selectedRecipe={selectedRecipe}
-                  closeModal={closeModal}
-                />
-              )}
+          <MealPlannerViewModal
+            showModal={showModal}
+            selectedRecipe={selectedRecipe}
+            closeModal={closeModal}
+          />
+        )}
       </Container>
     </div>
   );

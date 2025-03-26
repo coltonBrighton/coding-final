@@ -24,7 +24,9 @@ export default function MealPlannerViewModal({
           <p>{selectedRecipe.instructions}</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-secondary" onClick={closeModal}>Close</Button>
+          <Button variant="outline-secondary" onClick={closeModal}>
+            Close
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>

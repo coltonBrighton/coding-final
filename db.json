@@ -5,60 +5,28 @@
       "name": "Spaghetti Carbonara",
       "description": "Spaghetti carbonara is an Italian pasta dish made with eggs, cheese, pancetta or guanciale, and black pepper, creating a creamy, savory sauce.",
       "ingredients": "400 grams of Spaghetti, 150 grams of Pancetta, 4 large eggs, 100 grams of grated Parmesan, 2 cloves of garlic crushed, 1 tbsp of olive oil, salt and pepper to taste.",
-      "instructions": "Bring a large pot of salted water to a boil. Add spaghetti and cook according to package instructions until al dente. While pasta is cooking, heat olive oil in a large pan over medium heat. Add pancetta and garlic, and cook until the pancetta is crispy, about 5 minutes. In a separate bowl, whisk together the eggs and Parmesan cheese until smooth. Add a pinch of salt and black pepper. Once the pasta is cooked, reserve 1 cup of pasta water and drain the pasta. Add the hot pasta to the pan with pancetta and garlic. Toss to coat the pasta in the rendered fat. Remove the pan from the heat and slowly pour the egg mixture over the pasta, tossing quickly to create a creamy sauce. Add reserved pasta water a little at a time if the sauce is too thick. Serve immediately with extra Parmesan cheese and black pepper.",
-      "cuisine": "Italian",
-      "course": "Main Course",
-      "tags": [
-        "Pasta",
-        "Comfort Food",
-        "Italian",
-        "Quick"
-      ]
+      "instructions": "Bring a large pot of salted water to a boil. Add spaghetti and cook according to package instructions until al dente. While pasta is cooking, heat olive oil in a large pan over medium heat. Add pancetta and garlic, and cook until the pancetta is crispy, about 5 minutes. In a separate bowl, whisk together the eggs and Parmesan cheese until smooth. Add a pinch of salt and black pepper. Once the pasta is cooked, reserve 1 cup of pasta water and drain the pasta. Add the hot pasta to the pan with pancetta and garlic. Toss to coat the pasta in the rendered fat. Remove the pan from the heat and slowly pour the egg mixture over the pasta, tossing quickly to create a creamy sauce. Add reserved pasta water a little at a time if the sauce is too thick. Serve immediately with extra Parmesan cheese and black pepper."
     },
     {
       "id": 2,
       "name": "Chicken Caesar Salad",
       "description": "Chicken Caesar salad is a salad made with romaine lettuce, grilled chicken, croutons, Parmesan cheese, and Caesar dressing, often topped with black pepper.",
       "ingredients": "2 chicken breasts, 4 cups of Romaine lettuce, 1/2 a cup of Caesar dressing, 50 grams of shredded Parmesan cheese, 1 cup of Croutons, 1 tbsp of Olive oil, salt and pepper to taste.",
-      "instructions": "Season chicken breasts with salt and pepper. Heat olive oil in a pan over medium heat and cook the chicken for 6-7 minutes on each side until golden brown and cooked through. Let the chicken rest for a few minutes before slicing it into thin strips. In a large bowl, combine chopped romaine lettuce, Caesar dressing, Parmesan cheese, and croutons. Toss well to coat, then top with sliced chicken. Serve immediately.",
-      "cuisine": "American",
-      "course": "Salad",
-      "tags": [
-        "Salad",
-        "Chicken",
-        "Quick",
-        "Healthy"
-      ]
+      "instructions": "Season chicken breasts with salt and pepper. Heat olive oil in a pan over medium heat and cook the chicken for 6-7 minutes on each side until golden brown and cooked through. Let the chicken rest for a few minutes before slicing it into thin strips. In a large bowl, combine chopped romaine lettuce, Caesar dressing, Parmesan cheese, and croutons. Toss well to coat, then top with sliced chicken. Serve immediately."
     },
     {
       "id": 3,
       "name": "Vegetarian Tacos",
       "description": "Vegetarian tacos made with black beans, fresh avocado, and a variety of toppings, served in corn tortillas.",
       "ingredients": "8 corn tortillas, 1 can of black beans (drained and rinsed), 1 large avocado (sliced), 1/2 medium red onion (thinly sliced), 1 medium tomato (diced), 1 large lime (cut into wedges), 1/4 cup chopped cilantro, 1/2 cup sour cream, 1 tbsp olive oil, salt and pepper to taste.",
-      "instructions": "Heat olive oil in a skillet over medium heat. Add black beans and cook, stirring occasionally, for 5 minutes until heated through. Season with salt and pepper. Warm the corn tortillas in a dry skillet or microwave. Assemble the tacos by spooning a portion of the black beans onto each tortilla. Top with avocado slices, red onion, tomato, and cilantro. Serve with lime wedges and a dollop of sour cream on top.",
-      "cuisine": "Mexican",
-      "course": "Main Course",
-      "tags": [
-        "Vegan",
-        "Quick",
-        "Mexican",
-        "Vegetarian"
-      ]
+      "instructions": "Heat olive oil in a skillet over medium heat. Add black beans and cook, stirring occasionally, for 5 minutes until heated through. Season with salt and pepper. Warm the corn tortillas in a dry skillet or microwave. Assemble the tacos by spooning a portion of the black beans onto each tortilla. Top with avocado slices, red onion, tomato, and cilantro. Serve with lime wedges and a dollop of sour cream on top."
     },
     {
       "id": 4,
       "name": "Chocolate Chip Cookies",
       "description": "Classic chocolate chip cookies with a golden brown edge and chewy center, loaded with chocolate chips.",
       "ingredients": "1 cup of butter (softened), 1/2 cup of granulated sugar, 1/2 cup of brown sugar, 2 large eggs, 1 tsp of vanilla extract, 2.25 cups of all-purpose flour, 1 tsp of baking soda, 1/2 tsp of salt, 2 cups of chocolate chips.",
-      "instructions": "Preheat the oven to 350°F (175°C). In a large mixing bowl, cream together butter, granulated sugar, and brown sugar until smooth. Add eggs and vanilla extract, and mix until combined. In a separate bowl, combine flour, baking soda, and salt. Gradually add the dry ingredients to the wet mixture and stir until just combined. Fold in chocolate chips. Drop tablespoon-sized portions of dough onto an ungreased baking sheet. Bake for 10-12 minutes or until golden brown around the edges. Let cool on the baking sheet for a few minutes before transferring to a wire rack.",
-      "cuisine": "American",
-      "course": "Dessert",
-      "tags": [
-        "Dessert",
-        "Baking",
-        "Cookies",
-        "Sweet"
-      ]
+      "instructions": "Preheat the oven to 350°F (175°C). In a large mixing bowl, cream together butter, granulated sugar, and brown sugar until smooth. Add eggs and vanilla extract, and mix until combined. In a separate bowl, combine flour, baking soda, and salt. Gradually add the dry ingredients to the wet mixture and stir until just combined. Fold in chocolate chips. Drop tablespoon-sized portions of dough onto an ungreased baking sheet. Bake for 10-12 minutes or until golden brown around the edges. Let cool on the baking sheet for a few minutes before transferring to a wire rack."
     },
     {
       "name": "asdf",
@@ -68,5 +36,46 @@
       "id": 5
     }
   ],
-  "mealplan": []
+  "mealplan": [
+    {
+      "recipeId": 2,
+      "day": "Thursday",
+      "id": 1
+    },
+    {
+      "recipeId": 1,
+      "day": "Wednesday",
+      "id": 2
+    },
+    {
+      "recipeId": 1,
+      "day": "Thursday",
+      "id": 3
+    },
+    {
+      "recipeId": 1,
+      "day": "Monday",
+      "id": 4
+    },
+    {
+      "recipeId": 1,
+      "day": "Sunday",
+      "id": 5
+    },
+    {
+      "recipeId": 1,
+      "day": "Tuesday",
+      "id": 6
+    },
+    {
+      "recipeId": 1,
+      "day": "Friday",
+      "id": 7
+    },
+    {
+      "recipeId": 1,
+      "day": "Saturday",
+      "id": 8
+    }
+  ]
 }

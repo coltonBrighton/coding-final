@@ -35,56 +35,56 @@ export default function RecipeAddForm({ handleAddRecipe }: Props) {
         handleAddRecipe(newRecipe);
 
         // Clear the form fields after successful submission
-      setRecipeName("");
-      setRecipeDescription("");
-      setRecipeIngredients("");
-      setRecipeInstructions("");
+        setRecipeName("");
+        setRecipeDescription("");
+        setRecipeIngredients("");
+        setRecipeInstructions("");
       } else {
-        throw new Error("Failed to add recipe")
+        throw new Error("Failed to add recipe");
       }
     } catch (error) {
-      throw new Error("Failed to add recipe")
+      throw new Error("Failed to add recipe");
     }
   };
   return (
     <div className="m-1">
       <Form onSubmit={handleSubmit}>
-          <Form.Label>Recipie Name:</Form.Label>
-          <Form.Control
-            type="text"
-            aria-label="input recipe name"
-            placeholder="Recipe Name"
-            className="mb-3"
-            value={recipeName}
-            onChange={(e) => setRecipeName(e.target.value)}
-          />
-          <Form.Label>Breif Recipe Description:</Form.Label>
-          <Form.Control
-            as="textarea"
-            aria-label="textarea for recipe description input"
-            placeholder="Recipe Description"
-            className="mb-3"
-            value={recipeDescription}
-            onChange={(e) => setRecipeDescription(e.target.value)}
-          />
-          <Form.Label>Recipe Ingredients:</Form.Label>
-          <Form.Control
-            as="textarea"
-            aria-label="textarea for recipe ingredient input"
-            placeholder="Recipe Ingredients"
-            className="mb-3"
-            value={recipeIngredients}
-            onChange={(e) => setRecipeIngredients(e.target.value)}
-          />
-          <Form.Label>Recipe Instructions:</Form.Label>
-          <Form.Control
-            as="textarea"
-            aria-label="textarea for recipe instruction input"
-            placeholder="Recipe Instructions"
-            className="mb-3"
-            value={recipeInstructions}
-            onChange={(e) => setRecipeInstructions(e.target.value)}
-          />
+        <Form.Label>Recipie Name:</Form.Label>
+        <Form.Control
+          type="text"
+          aria-label="input recipe name"
+          placeholder="Recipe Name"
+          className="mb-3"
+          value={recipeName}
+          onChange={(e) => setRecipeName(e.target.value)}
+        />
+        <Form.Label>Breif Recipe Description:</Form.Label>
+        <Form.Control
+          as="textarea"
+          aria-label="textarea for recipe description input"
+          placeholder="Recipe Description"
+          className="mb-3"
+          value={recipeDescription}
+          onChange={(e) => setRecipeDescription(e.target.value)}
+        />
+        <Form.Label>Recipe Ingredients:</Form.Label>
+        <Form.Control
+          as="textarea"
+          aria-label="textarea for recipe ingredient input"
+          placeholder="Recipe Ingredients"
+          className="mb-3"
+          value={recipeIngredients}
+          onChange={(e) => setRecipeIngredients(e.target.value)}
+        />
+        <Form.Label>Recipe Instructions:</Form.Label>
+        <Form.Control
+          as="textarea"
+          aria-label="textarea for recipe instruction input"
+          placeholder="Recipe Instructions"
+          className="mb-3"
+          value={recipeInstructions}
+          onChange={(e) => setRecipeInstructions(e.target.value)}
+        />
       </Form>
       <div className="d-flex justify-content-center">
         <Button

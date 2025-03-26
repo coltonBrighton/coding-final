@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import Layout from './Layout.tsx'
 import MealPlanner from './mealplanner/MealPlanner.tsx'
 import Recipes from './recipes/Recipes.tsx' 
@@ -13,6 +13,10 @@ let router = createBrowserRouter([
     path: "/",
     Component: Layout,
     children: [
+      {
+        path: '/',
+        element: <Navigate to={"/home"} />, 
+      },
       {
         path:"/home",
         Component: Home

@@ -16,35 +16,41 @@ export default function () {
         <NavbarToggle aria-controls="basic-navbar-nav" className="me-5" />
         <Container>
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto me-5 nav-tabs">
+            <Nav className="ms-auto me-5 nav-pills my-2">
               <NavItem>
                 <NavLink
                   to="/home"
                   className={({ isActive }) =>
-                    isActive ? "nav-link active" : "nav-link text-light"
+                    isActive
+                      ? "nav-link active bg-info-subtle"
+                      : "nav-link text-light"
                   }
                 >
-                  Home
+                  <div className="mx-3">Home</div>
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink
                   to="/meal-planner"
                   className={({ isActive }) =>
-                    isActive ? "nav-link active" : "nav-link text-light"
+                    isActive
+                      ? "nav-link active bg-info-subtle"
+                      : "nav-link text-light"
                   }
                 >
-                  Meal Planner
+                  <div className="mx-3">Meal Planner</div>
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink
                   to="/recipes"
                   className={({ isActive }) =>
-                    isActive ? "nav-link active" : "nav-link text-light"
+                    isActive
+                      ? "nav-link active bg-info-subtle"
+                      : "nav-link text-light"
                   }
                 >
-                  My Recipes
+                  <div className="mx-3">My Recipes</div>
                 </NavLink>
               </NavItem>
             </Nav>

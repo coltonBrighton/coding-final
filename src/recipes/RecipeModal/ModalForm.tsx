@@ -3,14 +3,13 @@ import { recipe } from "../../../types";
 import { ChangeEvent } from "react";
 
 type Props = {
-    handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
-    editedRecipe: recipe 
+  handleChange: (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  editedRecipe: recipe;
 };
 
-export default function ModalForm({
-    handleChange,
-    editedRecipe
-}: Props) {
+export default function ModalForm({ handleChange, editedRecipe }: Props) {
   return (
     <>
       <Form>

@@ -10,28 +10,28 @@ type Props = {
     recipeId: number;
     day: string;
   }[];
-  handleButtonClick: (recipe: recipe | undefined) => void
-  dayOfTheWeek: string
+  handleButtonClick: (recipe: recipe | undefined) => void;
+  dayOfTheWeek: string;
 };
 
 export default function MealPlannerDetails({
   handleDelete,
   mealPlanWithRecipes,
   handleButtonClick,
-  dayOfTheWeek
+  dayOfTheWeek,
 }: Props) {
   const [collapsed, setCollapsed] = useState(false);
-
+  // function to show or hide reciepes
   const toggleCollapse = () => {
-    setCollapsed((prevState) => !prevState);
+    setCollapsed((collapsed) => !collapsed);
   };
   return (
     <div className="text-light">
       <Stack direction="horizontal">
-        <h3 className="display-3 mx-3">{dayOfTheWeek}</h3>
+        <h3 className="display-1 ms-auto">{dayOfTheWeek}</h3>
         <Button
           variant="outline-light"
-          className="text-light"
+          className="text-light mt-3 me-auto ms-3"
           onClick={toggleCollapse}
         >
           {collapsed ? "Show Meals" : "Hide Meals"}
@@ -46,9 +46,9 @@ export default function MealPlannerDetails({
               <Col
                 key={meal.id}
                 sm={12}
-                md={8}
+                md={6}
                 lg={4}
-                className="d-flex justify-content-center"
+                className="d-flex justify-content-center p-0"
               >
                 <MealPlannerCard
                   handleDelete={handleDelete}

@@ -38,7 +38,7 @@ export default function Recipes() {
   };
 
   const handleAddRecipe = (newRecipe: recipe) => {
-    // handle add
+    // handle add to front end
     setRecipe([...recipe, newRecipe]);
   };
 
@@ -79,12 +79,12 @@ export default function Recipes() {
   };
 
   const closeRecipeModal = () => setShowModal(false); // close modal
-  
+
   return (
     <div className="bg-dark">
       <Row className="d-flex min-vh-100">
         <Sidebar handleAddRecipe={handleAddRecipe} />
-        <Col md={8} className="p-0">
+        <Col md={6} className="p-0">
           <Container className="p-0">
             {loading && (
               <div className="d-flex justify-content-center my-5">
@@ -95,22 +95,22 @@ export default function Recipes() {
             )}
             {error && <Alert>Recipe Not Found</Alert>}
             <Row>
-            {recipe?.map((recipe, index) => (
-              <Col
-                key={recipe.id}
-                sm={12}
-                md={8}
-                lg={4}
-                className="d-flex justify-content-center"
-              >
-                <RecipeViewCard
-                  key={index}
-                  recipe={recipe}
-                  handleButtonClick={handleButtonClick}
-                  handleDelete={() => handleDelete(recipe.id)}
-                />
-              </Col>
-            ))}
+              {recipe?.map((recipe, index) => (
+                <Col
+                  key={recipe.id}
+                  sm={12}
+                  md={6}
+                  lg={4}
+                  className="d-flex justify-content-center"
+                >
+                  <RecipeViewCard
+                    key={index}
+                    recipe={recipe}
+                    handleButtonClick={handleButtonClick}
+                    handleDelete={() => handleDelete(recipe.id)}
+                  />
+                </Col>
+              ))}
             </Row>
           </Container>
         </Col>

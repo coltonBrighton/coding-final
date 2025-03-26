@@ -34,14 +34,14 @@ export default function RecipeViewModal({
 
   const handleSaveClick = () => {
     // Pass the updated recipe object to updateRecipe
-    updateRecipe(editedRecipe);  // This updates the parent state
-    setIsEditMode(false);  // Exit edit mode
+    updateRecipe(editedRecipe); // This updates the parent state
+    setIsEditMode(false); // Exit edit mode
     closeRecipeModal(); // Close modal after saving
   };
 
   // Sync editedRecipe state with selectedRecipe when selectedRecipe changes
   useEffect(() => {
-    setEditedRecipe(selectedRecipe);  // Reset editedRecipe state when selectedRecipe changes
+    setEditedRecipe(selectedRecipe); // Reset editedRecipe state when selectedRecipe changes
   }, [selectedRecipe]);
 
   const handleEditClick = () => {
@@ -56,7 +56,7 @@ export default function RecipeViewModal({
         </Modal.Header>
         <Modal.Body>
           {isEditMode ? (
-            <ModalForm 
+            <ModalForm
               handleChange={handleChange}
               editedRecipe={editedRecipe}
             />
@@ -70,11 +70,11 @@ export default function RecipeViewModal({
           )}
         </Modal.Body>
         <Modal.Footer>
-          <ModalButtons  
-            isEditMode={isEditMode} 
-            closeRecipeModal={closeRecipeModal} 
-            handleSaveClick={handleSaveClick} 
-            handleEditClick={handleEditClick} 
+          <ModalButtons
+            isEditMode={isEditMode}
+            closeRecipeModal={closeRecipeModal}
+            handleSaveClick={handleSaveClick}
+            handleEditClick={handleEditClick}
           />
         </Modal.Footer>
       </Modal>
