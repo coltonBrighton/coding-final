@@ -29,7 +29,7 @@ export default function RecipeViewModal({
     setEditedRecipe({
       ...editedRecipe,
       [name]: value,
-    }) // udates the state of the named input field with the new value of the input field
+    }) // updates the state of the named input field with the new value of the input field
   }
 
   const handleSaveClick = () => {

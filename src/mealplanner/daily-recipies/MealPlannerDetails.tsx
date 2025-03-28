@@ -31,13 +31,13 @@ export default function MealPlannerDetails({
         <h3 className="display-1 ms-auto">{dayOfTheWeek}</h3>
         <Button
           variant="outline-light"
-          className="text-light mt-3 me-auto ms-3"
+          className="mt-3 me-auto ms-3"
           onClick={toggleCollapse}
         >
           {collapsed ? "Show Meals" : "Hide Meals"}
         </Button>
       </Stack>
-      <hr></hr>
+      <hr/>
       <Row>
         {!collapsed &&
           mealPlanWithRecipes

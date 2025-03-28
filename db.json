@@ -27,6 +27,13 @@
       "description": "Classic chocolate chip cookies with a golden brown edge and chewy center, loaded with chocolate chips.",
       "ingredients": "1 cup of butter (softened), 1/2 cup of granulated sugar, 1/2 cup of brown sugar, 2 large eggs, 1 tsp of vanilla extract, 2.25 cups of all-purpose flour, 1 tsp of baking soda, 1/2 tsp of salt, 2 cups of chocolate chips.",
       "instructions": "Preheat the oven to 350°F (175°C). In a large mixing bowl, cream together butter, granulated sugar, and brown sugar until smooth. Add eggs and vanilla extract, and mix until combined. In a separate bowl, combine flour, baking soda, and salt. Gradually add the dry ingredients to the wet mixture and stir until just combined. Fold in chocolate chips. Drop tablespoon-sized portions of dough onto an ungreased baking sheet. Bake for 10-12 minutes or until golden brown around the edges. Let cool on the baking sheet for a few minutes before transferring to a wire rack."
+    },
+    {
+      "name": "hello",
+      "description": "lkjsad;lfkjasd;lkKJASJHDFLKJSADFH",
+      "ingredients": "l;ksadjf;lksadjf;lskdj;lakjKLJASHDFLKJSADH",
+      "instructions": "KJSADHFLKSAJDHasdfksajdfl;ksdjf;lk",
+      "id": 5
     }
   ],
   "mealplan": [
@@ -34,16 +41,6 @@
       "recipeId": 1,
       "day": "Monday",
       "id": 4
-    },
-    {
-      "recipeId": 4,
-      "day": "Wednesday",
-      "id": 6
-    },
-    {
-      "recipeId": 1,
-      "day": "Monday",
-      "id": 7
     },
     {
       "recipeId": 2,

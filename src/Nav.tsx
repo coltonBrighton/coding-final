@@ -14,7 +14,7 @@ export default function () {
       <Navbar expand="lg" bg="secondary" data-bs-theme="dark">
         <NavbarBrand className="ms-5">FlavorForge</NavbarBrand>
         <NavbarToggle aria-controls="basic-navbar-nav" className="me-5" />
-        <Container>
+        <Container className="me-5">
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto me-5 nav-pills my-2">
               <NavItem>
